@@ -1,0 +1,213 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Исходные файлы">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Файлы заголовков">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Файлы ресурсов">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Файлы заголовков\WindowObject">
+      <UniqueIdentifier>{2142e4e2-229f-4806-98a7-ee6b12a8dbb9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\GraphCore">
+      <UniqueIdentifier>{3432bbe8-e17a-453d-b9ff-8c31bfcd7d49}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\RaiiWinApi">
+      <UniqueIdentifier>{4ddf2a31-5ff6-4b8e-9eec-1ebe46063303}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\GraphModules">
+      <UniqueIdentifier>{dcb72194-e579-405f-8de0-2e240cefba6c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\GraphModules\BaseMath">
+      <UniqueIdentifier>{8586e1d5-6064-43a8-b937-e7b3a3047839}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\GraphModules\Data">
+      <UniqueIdentifier>{26161ee3-f846-4dd3-8d56-36eb66eb93c1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\GraphModules\Ruler">
+      <UniqueIdentifier>{3671127b-ba9e-4ae0-9549-16feffd1c4ec}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\GraphModules\Ruler\Support">
+      <UniqueIdentifier>{dae4762c-ec4e-42e1-bfec-9b938204b8c1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\GraphModules\Ruler\Caption">
+      <UniqueIdentifier>{c365f453-06cc-4d48-b84c-ca08f06a39f9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\GraphModules\Ruler\Grid">
+      <UniqueIdentifier>{3b5d8ee8-326b-417d-8d75-f59dde1be4df}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\GraphModules\Ruler\Base">
+      <UniqueIdentifier>{70a52989-a342-40f6-919b-a8f319635793}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\GraphModules\Ruler\Axes">
+      <UniqueIdentifier>{24ad660d-c108-4220-84ad-ef650126ffd9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\GraphModules\UI">
+      <UniqueIdentifier>{90d50e5f-eac6-44dd-a850-e68b552bbae9}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\src\main.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\WindowObject\WindowObject.cpp">
+      <Filter>Файлы заголовков\WindowObject</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\GraphCore\GraphState.cpp">
+      <Filter>Файлы заголовков\GraphCore</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\WindowObject\WinApiEvents.cpp">
+      <Filter>Файлы заголовков\WindowObject</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\GraphModules\BaseMath\Area2d.cpp">
+      <Filter>Файлы заголовков\GraphModules\BaseMath</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\GraphModules\BaseMath\RelativeVec2d.cpp">
+      <Filter>Файлы заголовков\GraphModules\BaseMath</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\GraphModules\BaseMath\Vec2d.cpp">
+      <Filter>Файлы заголовков\GraphModules\BaseMath</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\GraphModules\Data\DataState.cpp">
+      <Filter>Файлы заголовков\GraphModules\Data</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\GraphModules\Data\LinearData.cpp">
+      <Filter>Файлы заголовков\GraphModules\Data</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\GraphModules\Ruler\Axes\AxesState.cpp">
+      <Filter>Файлы заголовков\GraphModules\Ruler\Axes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\GraphModules\Ruler\Caption\Caption.cpp">
+      <Filter>Файлы заголовков\GraphModules\Ruler\Caption</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\GraphModules\Ruler\Grid\Grid.cpp">
+      <Filter>Файлы заголовков\GraphModules\Ruler\Grid</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\GraphModules\Ruler\Support\GridCalculator.cpp">
+      <Filter>Файлы заголовков\GraphModules\Ruler\Support</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\GraphModules\Ruler\Support\TextFormatter.cpp">
+      <Filter>Файлы заголовков\GraphModules\Ruler\Support</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\GraphModules\Ruler\Support\TransparentColor.cpp">
+      <Filter>Файлы заголовков\GraphModules\Ruler\Support</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\GraphModules\UI\LegendItem.cpp">
+      <Filter>Файлы заголовков\GraphModules\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\GraphModules\UI\TugboatState.cpp">
+      <Filter>Файлы заголовков\GraphModules\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\GraphModules\UI\WindowState.cpp">
+      <Filter>Файлы заголовков\GraphModules\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\GraphCore\GraphContext.cpp">
+      <Filter>Файлы заголовков\GraphCore</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\GraphCore\TransformCoordinates.cpp">
+      <Filter>Файлы заголовков\GraphCore</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\GraphModules\UI\DataTracker.cpp">
+      <Filter>Файлы заголовков\GraphModules\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\GraphModules\UI\AutoScaler.cpp">
+      <Filter>Файлы заголовков\GraphModules\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\GraphModules\Data\RenderCache.cpp">
+      <Filter>Файлы заголовков\GraphModules\Data</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\GraphModules\UI\ZoomState.cpp">
+      <Filter>Файлы заголовков\GraphModules\UI</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\src\WindowObject\WindowObject.hpp">
+      <Filter>Файлы заголовков\WindowObject</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\GraphCore\GraphState.hpp">
+      <Filter>Файлы заголовков\GraphCore</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\RaiiWinApi\RaiiWinApi.hpp">
+      <Filter>Файлы заголовков\RaiiWinApi</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\GraphModules\BaseMath\Area2d.hpp">
+      <Filter>Файлы заголовков\GraphModules\BaseMath</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\GraphModules\BaseMath\RelativeVec2d.hpp">
+      <Filter>Файлы заголовков\GraphModules\BaseMath</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\GraphModules\BaseMath\Vec2d.hpp">
+      <Filter>Файлы заголовков\GraphModules\BaseMath</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\GraphModules\Data\DataState.hpp">
+      <Filter>Файлы заголовков\GraphModules\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\GraphModules\Data\LinearData.hpp">
+      <Filter>Файлы заголовков\GraphModules\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\GraphModules\Ruler\Axes\AxesState.hpp">
+      <Filter>Файлы заголовков\GraphModules\Ruler\Axes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\GraphModules\Ruler\Base\AxesConfig.hpp">
+      <Filter>Файлы заголовков\GraphModules\Ruler\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\GraphModules\Ruler\Base\AxesDescription.hpp">
+      <Filter>Файлы заголовков\GraphModules\Ruler\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\GraphModules\Ruler\Caption\Caption.hpp">
+      <Filter>Файлы заголовков\GraphModules\Ruler\Caption</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\GraphModules\Ruler\Grid\Grid.hpp">
+      <Filter>Файлы заголовков\GraphModules\Ruler\Grid</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\GraphModules\Ruler\Support\GridCalculator.hpp">
+      <Filter>Файлы заголовков\GraphModules\Ruler\Support</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\GraphModules\Ruler\Support\TextFormatter.hpp">
+      <Filter>Файлы заголовков\GraphModules\Ruler\Support</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\GraphModules\Ruler\Support\TransparentColor.hpp">
+      <Filter>Файлы заголовков\GraphModules\Ruler\Support</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\GraphModules\UI\LegendItem.hpp">
+      <Filter>Файлы заголовков\GraphModules\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\GraphModules\UI\PlotResizer.hpp">
+      <Filter>Файлы заголовков\GraphModules\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\GraphModules\UI\TugboatState.hpp">
+      <Filter>Файлы заголовков\GraphModules\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\GraphModules\UI\WindowState.hpp">
+      <Filter>Файлы заголовков\GraphModules\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\GraphCore\GraphContext.hpp">
+      <Filter>Файлы заголовков\GraphCore</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\GraphCore\TransformCoordinates.hpp">
+      <Filter>Файлы заголовков\GraphCore</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\GraphModules\UI\DataTracker.hpp">
+      <Filter>Файлы заголовков\GraphModules\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\GraphModules\UI\AutoScaler.hpp">
+      <Filter>Файлы заголовков\GraphModules\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\GraphModules\Data\RenderCache.hpp">
+      <Filter>Файлы заголовков\GraphModules\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\GraphModules\UI\ZoomState.hpp">
+      <Filter>Файлы заголовков\GraphModules\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\GraphModules\UI\ConfigUI.hpp">
+      <Filter>Файлы заголовков\GraphModules\UI</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
