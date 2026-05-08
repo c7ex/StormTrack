@@ -1,17 +1,17 @@
-#include "WindowObject.hpp"
+#include "StormTrack.hpp"
 
-const wchar_t* WindowObject::CLASS_NAME = L"FlowerStorm";
+const wchar_t* StormTrack::CLASS_NAME = L"StormTrack";
 
-LRESULT CALLBACK WindowObject::WindowProcStatic(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam) {
-    WindowObject* pThis = nullptr;
+LRESULT CALLBACK StormTrack::WindowProcStatic(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam) {
+    StormTrack* pThis = nullptr;
 
     if (msg == WM_NCCREATE) {
         CREATESTRUCT* pCreate = reinterpret_cast<CREATESTRUCT*>(lParam);
-        pThis = reinterpret_cast<WindowObject*>(pCreate->lpCreateParams);
+        pThis = reinterpret_cast<StormTrack*>(pCreate->lpCreateParams);
         SetWindowLongPtr(hwnd, GWLP_USERDATA, reinterpret_cast<LONG_PTR>(pThis));
     }
     else {
-        pThis = reinterpret_cast<WindowObject*>(GetWindowLongPtr(hwnd, GWLP_USERDATA));
+        pThis = reinterpret_cast<StormTrack*>(GetWindowLongPtr(hwnd, GWLP_USERDATA));
     }
 
     if (pThis) {
@@ -21,7 +21,7 @@ LRESULT CALLBACK WindowObject::WindowProcStatic(HWND hwnd, UINT msg, WPARAM wPar
     return DefWindowProc(hwnd, msg, wParam, lParam);
 }
 
-bool WindowObject::RegisterWindowClass() {
+bool StormTrack::RegisterWindowClass() {
     WNDCLASSEX wc = {};
     wc.cbSize = sizeof(WNDCLASSEX);
     wc.style = CS_HREDRAW | CS_VREDRAW;
@@ -34,7 +34,7 @@ bool WindowObject::RegisterWindowClass() {
     return RegisterClassEx(&wc) != 0;
 }
 
-bool WindowObject::Create(int nCmdShow) {
+bool StormTrack::Create(int nCmdShow) {
     hwnd = CreateWindowEx(
         0,
         CLASS_NAME,
@@ -58,7 +58,7 @@ bool WindowObject::Create(int nCmdShow) {
     return true;
 }
 
-void WindowObject::ThreadProc(int nCmdShow) {
+void StormTrack::ThreadProc(int nCmdShow) {
     if (!Create(nCmdShow)) {
         windowCreated = false;
         return;
@@ -73,7 +73,7 @@ void WindowObject::ThreadProc(int nCmdShow) {
     }
 }
 
-WindowObject::WindowObject(HINSTANCE hInst, const wchar_t* title)
+StormTrack::StormTrack(HINSTANCE hInst, const wchar_t* title)
     : hInstance(hInst), hwnd(nullptr), windowTitle(title),
     windowCreated(false), windowClosed(false) {
 
@@ -84,19 +84,19 @@ WindowObject::WindowObject(HINSTANCE hInst, const wchar_t* title)
     graphState.InitializeReferencePosition(0.0, -1000.0);
 }
 
-WindowObject::~WindowObject() {
+StormTrack::~StormTrack() {
     Close();
     if (windowThread.joinable()) {
         windowThread.join();
     }
 }
 
-bool WindowObject::Show(int nCmdShow) {
+bool StormTrack::Show(int nCmdShow) {
     if (windowThread.joinable()) {
         return false;
     }
 
-    windowThread = std::thread(&WindowObject::ThreadProc, this, nCmdShow);
+    windowThread = std::thread(&StormTrack::ThreadProc, this, nCmdShow);
 
     while (!windowCreated && !windowClosed) {
         Sleep(10);
@@ -105,22 +105,22 @@ bool WindowObject::Show(int nCmdShow) {
     return windowCreated;
 }
 
-void WindowObject::Close() {
+void StormTrack::Close() {
     if (hwnd && !windowClosed) {
         PostMessage(hwnd, WM_CLOSE, 0, 0);
     }
 }
 
-void WindowObject::WaitForClose() {
+void StormTrack::WaitForClose() {
     if (windowThread.joinable()) {
         windowThread.join();
     }
 }
 
-bool WindowObject::IsValid() const {
+bool StormTrack::IsValid() const {
     return (hwnd != nullptr) && (!windowClosed);
 }
 
-HWND WindowObject::GetHandle() const {
+HWND StormTrack::GetHandle() const {
     return hwnd;
 }

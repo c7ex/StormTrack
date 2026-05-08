@@ -7,7 +7,7 @@
 #include"GraphState.hpp"
 
 /*
-    <WindowObject>
+    <StormTrack>
     description: 
         A Windows window wrapper class that runs in a separate thread. 
         This class encapsulates Windows API window creation and management,
@@ -16,7 +16,7 @@
 
     Usage example:
         HINSTANCE hInstance = GetModuleHandle(nullptr);
-        WindowObject window(hInstance, L"My Window");
+        StormTrack window(hInstance, L"My Window");
         window.Show(); // Window runs in background thread
         window.Close(); // Close window
         window.WaitForClose(); // Wait for thread to finish
@@ -29,7 +29,7 @@
     C++11 or later
  */
 
-class WindowObject {
+class StormTrack {
 private:
     HWND hwnd;
     HINSTANCE hInstance;
@@ -56,17 +56,26 @@ private:
     void ThreadProc(int nCmdShow);
 
 public:
-    WindowObject(HINSTANCE hInst, const wchar_t* title = L"FlowerStorm");
-    ~WindowObject();
+    StormTrack(HINSTANCE hInst, const wchar_t* title = L"StormTrack");
+    ~StormTrack();
     
     bool Show(int nCmdShow = SW_SHOWDEFAULT);
-
     void Close();
     void WaitForClose();
-
     bool IsValid() const;
 
     HWND GetHandle() const;
 
-    GraphState& GetGraphState() { return graphState; }
+public:
+    void StaticData(std::vector<double>& load_data, std::wstring caption, COLORREF color, double step = 1, double offset = 0) {
+        graphState.AddData(load_data, caption, color, step, offset);
+    }
+
+    size_t AddStreamingTrace(std::wstring caption, COLORREF color, double step = 1, double offset = 0) {
+        return graphState.CreateTrace(caption, color, step, offset);
+    }
+
+    bool Streaming(std::vector<double>& load_data, size_t trace_index) {
+        return graphState.StreamUpdate(load_data, trace_index);
+    }
 };

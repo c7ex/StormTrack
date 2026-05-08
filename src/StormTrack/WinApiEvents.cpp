@@ -1,6 +1,6 @@
-#include "WindowObject.hpp"
+#include "StormTrack.hpp"
 
-LRESULT WindowObject::WindowProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam) {
+LRESULT StormTrack::WindowProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam) {
     switch (msg) {
     case WM_SIZE: {
         graphState.HandlerChangeSizeWindow(lParam);

@@ -1,0 +1,204 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="src">
+      <UniqueIdentifier>{df9f9b87-18f1-4117-81ed-f172d78c6f82}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\GraphCore">
+      <UniqueIdentifier>{5b0d65e2-945e-4ace-beb7-3a67b20b5f15}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\GraphModules">
+      <UniqueIdentifier>{67384c03-b68e-41ae-9a78-042d16b127a2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\GraphModules\BaseMath">
+      <UniqueIdentifier>{2c9a2890-4b42-42a2-8259-50b32377c3f8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\GraphModules\Data">
+      <UniqueIdentifier>{a5f51d6c-8cf6-4029-9887-90b321163cd5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\GraphModules\Ruler">
+      <UniqueIdentifier>{7021c0b7-51dc-40e1-a7c9-c3e6092ed769}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\GraphModules\UI">
+      <UniqueIdentifier>{7a93874b-4e53-41af-bdf9-310b821acae3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\GraphModules\Ruler\Axes">
+      <UniqueIdentifier>{c83ed89c-ac1a-48c2-9e82-831d5eae690e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\GraphModules\Ruler\Base">
+      <UniqueIdentifier>{a1c1702b-51e2-4777-b4e7-dacbbcf01e23}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\GraphModules\Ruler\Caption">
+      <UniqueIdentifier>{9ccedea9-a4ea-454b-8c12-c78d15e26e44}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\GraphModules\Ruler\Grid">
+      <UniqueIdentifier>{e99979a2-4bdf-40e7-9e55-a09d48be9304}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\GraphModules\Ruler\Support">
+      <UniqueIdentifier>{4e45edc5-fe8e-42d3-a836-25ae746ac846}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\StormTrack">
+      <UniqueIdentifier>{2e87c09f-3917-48c2-af80-1d31566da5b3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\RaiiWinApi">
+      <UniqueIdentifier>{bf43a090-7a28-4b25-abf2-337c550736b5}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\src\main.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\GraphCore\GraphContext.cpp">
+      <Filter>src\GraphCore</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\GraphCore\GraphState.cpp">
+      <Filter>src\GraphCore</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\GraphCore\TransformCoordinates.cpp">
+      <Filter>src\GraphCore</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\GraphModules\BaseMath\Area2d.cpp">
+      <Filter>src\GraphModules\BaseMath</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\GraphModules\BaseMath\RelativeVec2d.cpp">
+      <Filter>src\GraphModules\BaseMath</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\GraphModules\BaseMath\Vec2d.cpp">
+      <Filter>src\GraphModules\BaseMath</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\GraphModules\Data\DataState.cpp">
+      <Filter>src\GraphModules\Data</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\GraphModules\Data\LinearData.cpp">
+      <Filter>src\GraphModules\Data</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\GraphModules\Data\RenderCache.cpp">
+      <Filter>src\GraphModules\Data</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\GraphModules\UI\AutoScaler.cpp">
+      <Filter>src\GraphModules\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\GraphModules\UI\DataTracker.cpp">
+      <Filter>src\GraphModules\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\GraphModules\UI\LegendItem.cpp">
+      <Filter>src\GraphModules\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\GraphModules\UI\TugboatState.cpp">
+      <Filter>src\GraphModules\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\GraphModules\UI\WindowState.cpp">
+      <Filter>src\GraphModules\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\GraphModules\UI\ZoomState.cpp">
+      <Filter>src\GraphModules\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\GraphModules\Ruler\Axes\AxesState.cpp">
+      <Filter>src\GraphModules\Ruler\Axes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\GraphModules\Ruler\Caption\Caption.cpp">
+      <Filter>src\GraphModules\Ruler\Caption</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\GraphModules\Ruler\Grid\Grid.cpp">
+      <Filter>src\GraphModules\Ruler\Grid</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\GraphModules\Ruler\Support\GridCalculator.cpp">
+      <Filter>src\GraphModules\Ruler\Support</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\GraphModules\Ruler\Support\TextFormatter.cpp">
+      <Filter>src\GraphModules\Ruler\Support</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\GraphModules\Ruler\Support\TransparentColor.cpp">
+      <Filter>src\GraphModules\Ruler\Support</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\StormTrack\StormTrack.cpp">
+      <Filter>src\StormTrack</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\StormTrack\WinApiEvents.cpp">
+      <Filter>src\StormTrack</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\src\GraphCore\GraphContext.hpp">
+      <Filter>src\GraphCore</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\GraphCore\GraphState.hpp">
+      <Filter>src\GraphCore</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\GraphCore\TransformCoordinates.hpp">
+      <Filter>src\GraphCore</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\GraphModules\BaseMath\Area2d.hpp">
+      <Filter>src\GraphModules\BaseMath</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\GraphModules\BaseMath\RelativeVec2d.hpp">
+      <Filter>src\GraphModules\BaseMath</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\GraphModules\BaseMath\Vec2d.hpp">
+      <Filter>src\GraphModules\BaseMath</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\GraphModules\Data\DataState.hpp">
+      <Filter>src\GraphModules\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\GraphModules\Data\LinearData.hpp">
+      <Filter>src\GraphModules\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\GraphModules\Data\RenderCache.hpp">
+      <Filter>src\GraphModules\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\GraphModules\UI\AutoScaler.hpp">
+      <Filter>src\GraphModules\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\GraphModules\UI\ConfigUI.hpp">
+      <Filter>src\GraphModules\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\GraphModules\UI\DataTracker.hpp">
+      <Filter>src\GraphModules\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\GraphModules\UI\LegendItem.hpp">
+      <Filter>src\GraphModules\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\GraphModules\UI\PlotResizer.hpp">
+      <Filter>src\GraphModules\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\GraphModules\UI\TugboatState.hpp">
+      <Filter>src\GraphModules\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\GraphModules\UI\WindowState.hpp">
+      <Filter>src\GraphModules\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\GraphModules\UI\ZoomState.hpp">
+      <Filter>src\GraphModules\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\GraphModules\Ruler\Axes\AxesState.hpp">
+      <Filter>src\GraphModules\Ruler\Axes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\GraphModules\Ruler\Base\AxesConfig.hpp">
+      <Filter>src\GraphModules\Ruler\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\GraphModules\Ruler\Base\AxesDescription.hpp">
+      <Filter>src\GraphModules\Ruler\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\GraphModules\Ruler\Caption\Caption.hpp">
+      <Filter>src\GraphModules\Ruler\Caption</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\GraphModules\Ruler\Grid\Grid.hpp">
+      <Filter>src\GraphModules\Ruler\Grid</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\GraphModules\Ruler\Support\GridCalculator.hpp">
+      <Filter>src\GraphModules\Ruler\Support</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\GraphModules\Ruler\Support\TextFormatter.hpp">
+      <Filter>src\GraphModules\Ruler\Support</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\GraphModules\Ruler\Support\TransparentColor.hpp">
+      <Filter>src\GraphModules\Ruler\Support</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\RaiiWinApi\RaiiWinApi.hpp">
+      <Filter>src\RaiiWinApi</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\StormTrack\StormTrack.hpp">
+      <Filter>src\StormTrack</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
