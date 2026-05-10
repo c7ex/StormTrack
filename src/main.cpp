@@ -17,7 +17,7 @@ std::vector<double> generate_signal(size_t size, int mask, double amplitude = 20
 
 void ExampleStreaming() {
     HINSTANCE hInstance = GetModuleHandle(nullptr);
-    StormTrack window(hInstance, L"[StormTrack] Demo Streaming");
+    StormTrack window(hInstance, L"[StormTrack] Demo Streaming Data");
     window.Show();
 
     static std::mt19937 rng(std::random_device{}());

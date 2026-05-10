@@ -18,69 +18,12 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="..\..\src\GraphCore\GraphContext.cpp" />
-    <ClCompile Include="..\..\src\GraphCore\GraphState.cpp" />
-    <ClCompile Include="..\..\src\GraphCore\TransformCoordinates.cpp" />
-    <ClCompile Include="..\..\src\GraphModules\BaseMath\Area2d.cpp" />
-    <ClCompile Include="..\..\src\GraphModules\BaseMath\RelativeVec2d.cpp" />
-    <ClCompile Include="..\..\src\GraphModules\BaseMath\Vec2d.cpp" />
-    <ClCompile Include="..\..\src\GraphModules\Data\DataState.cpp" />
-    <ClCompile Include="..\..\src\GraphModules\Data\LinearData.cpp" />
-    <ClCompile Include="..\..\src\GraphModules\Data\RenderCache.cpp" />
-    <ClCompile Include="..\..\src\GraphModules\Ruler\Axes\AxesState.cpp" />
-    <ClCompile Include="..\..\src\GraphModules\Ruler\Caption\Caption.cpp" />
-    <ClCompile Include="..\..\src\GraphModules\Ruler\Grid\Grid.cpp" />
-    <ClCompile Include="..\..\src\GraphModules\Ruler\Support\GridCalculator.cpp" />
-    <ClCompile Include="..\..\src\GraphModules\Ruler\Support\TextFormatter.cpp" />
-    <ClCompile Include="..\..\src\GraphModules\Ruler\Support\TransparentColor.cpp" />
-    <ClCompile Include="..\..\src\GraphModules\UI\AutoScaler.cpp" />
-    <ClCompile Include="..\..\src\GraphModules\UI\DataTracker.cpp" />
-    <ClCompile Include="..\..\src\GraphModules\UI\LegendItem.cpp" />
-    <ClCompile Include="..\..\src\GraphModules\UI\TugboatState.cpp" />
-    <ClCompile Include="..\..\src\GraphModules\UI\WindowState.cpp" />
-    <ClCompile Include="..\..\src\GraphModules\UI\ZoomState.cpp" />
-    <ClCompile Include="..\..\src\StormTrack\StormTrack.cpp" />
-    <ClCompile Include="..\..\src\StormTrack\WinApiEvents.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="..\..\src\GraphCore\GraphContext.hpp" />
-    <ClInclude Include="..\..\src\GraphCore\GraphState.hpp" />
-    <ClInclude Include="..\..\src\GraphCore\TransformCoordinates.hpp" />
-    <ClInclude Include="..\..\src\GraphModules\BaseMath\Area2d.hpp" />
-    <ClInclude Include="..\..\src\GraphModules\BaseMath\RelativeVec2d.hpp" />
-    <ClInclude Include="..\..\src\GraphModules\BaseMath\Vec2d.hpp" />
-    <ClInclude Include="..\..\src\GraphModules\Data\DataState.hpp" />
-    <ClInclude Include="..\..\src\GraphModules\Data\LinearData.hpp" />
-    <ClInclude Include="..\..\src\GraphModules\Data\RenderCache.hpp" />
-    <ClInclude Include="..\..\src\GraphModules\Ruler\Axes\AxesState.hpp" />
-    <ClInclude Include="..\..\src\GraphModules\Ruler\Base\AxesConfig.hpp" />
-    <ClInclude Include="..\..\src\GraphModules\Ruler\Base\AxesDescription.hpp" />
-    <ClInclude Include="..\..\src\GraphModules\Ruler\Caption\Caption.hpp" />
-    <ClInclude Include="..\..\src\GraphModules\Ruler\Grid\Grid.hpp" />
-    <ClInclude Include="..\..\src\GraphModules\Ruler\Support\GridCalculator.hpp" />
-    <ClInclude Include="..\..\src\GraphModules\Ruler\Support\TextFormatter.hpp" />
-    <ClInclude Include="..\..\src\GraphModules\Ruler\Support\TransparentColor.hpp" />
-    <ClInclude Include="..\..\src\GraphModules\UI\AutoScaler.hpp" />
-    <ClInclude Include="..\..\src\GraphModules\UI\ConfigUI.hpp" />
-    <ClInclude Include="..\..\src\GraphModules\UI\DataTracker.hpp" />
-    <ClInclude Include="..\..\src\GraphModules\UI\LegendItem.hpp" />
-    <ClInclude Include="..\..\src\GraphModules\UI\PlotResizer.hpp" />
-    <ClInclude Include="..\..\src\GraphModules\UI\TugboatState.hpp" />
-    <ClInclude Include="..\..\src\GraphModules\UI\WindowState.hpp" />
-    <ClInclude Include="..\..\src\GraphModules\UI\ZoomState.hpp" />
-    <ClInclude Include="..\..\src\RaiiWinApi\RaiiWinApi.hpp" />
-    <ClInclude Include="..\..\src\StormTrack\StormTrack.hpp" />
-  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{d0a58efa-5622-4c27-ac65-eb008ce4f950}</ProjectGuid>
-    <TargetName>StormTrack</TargetName>
-    <AssemblyName>StormTrack</AssemblyName>
-    <RootNamespace>StormTrack</RootNamespace>
+    <ProjectGuid>{9bde3aeb-4640-450e-b3e6-63bd6749d6e9}</ProjectGuid>
+    <RootNamespace>Demo</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
-    <ProjectName>StormTrack</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -97,13 +40,13 @@
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v143</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v143</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
@@ -167,47 +110,38 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>..\..\src\RaiiWinApi;..\..\src\GraphModules\UI;..\..\src\GraphModules\Data;..\..\src\GraphModules\Ruler\Axes;..\..\src\GraphModules\Ruler\Base;..\..\src\GraphModules\Ruler\Support;..\..\src\GraphModules\Ruler\Caption;..\..\src\GraphModules\Ruler\Grid;..\..\src\GraphModules\Ruler;..\..\src\GraphModules\BaseMath;..\..\src\GraphCore;..\..\src\StormTrack;..\..\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <LanguageStandard>stdcpp17</LanguageStandard>
+      <AdditionalIncludeDirectories>$(OutDir)\StormTrackHeaders</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>$(OutDir);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>StormTrack.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
-    <PostBuildEvent>
-      <Command>if exist "$(OutDir)StormTrackHeaders" rmdir /S /Q "$(OutDir)StormTrackHeaders"
-mkdir "$(OutDir)StormTrackHeaders"
-for /r "$(SolutionDir)..\src" %%f in (*.hpp) do copy "%%f" "$(OutDir)StormTrackHeaders\"</Command>
-    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <FunctionLevelLinking>true</FunctionLevelLinking>
-      <IntrinsicFunctions>false</IntrinsicFunctions>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>..\..\src\RaiiWinApi;..\..\src\GraphModules\UI;..\..\src\GraphModules\Data;..\..\src\GraphModules\Ruler\Axes;..\..\src\GraphModules\Ruler\Base;..\..\src\GraphModules\Ruler\Support;..\..\src\GraphModules\Ruler\Caption;..\..\src\GraphModules\Ruler\Grid;..\..\src\GraphModules\Ruler;..\..\src\GraphModules\BaseMath;..\..\src\GraphCore;..\..\src\StormTrack;..\..\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <LanguageStandard>stdcpp17</LanguageStandard>
-      <FavorSizeOrSpeed>Neither</FavorSizeOrSpeed>
+      <AdditionalIncludeDirectories>$(OutDir)\StormTrackHeaders</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>$(OutDir);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>StormTrack.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
-    <PostBuildEvent>
-      <Command>if exist "$(OutDir)StormTrackHeaders" rmdir /S /Q "$(OutDir)StormTrackHeaders"
-mkdir "$(OutDir)StormTrackHeaders"
-for /r "$(SolutionDir)..\src" %%f in (*.hpp) do copy "%%f" "$(OutDir)StormTrackHeaders\"</Command>
-    </PostBuildEvent>
   </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\src\main.cpp" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
-  <Target Name="CleanStormTrackHeaders" AfterTargets="CoreClean">
-  <RemoveDir Directories="$(OutDir)StormTrackHeaders" />
-  </Target>
 </Project>

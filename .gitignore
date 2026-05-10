@@ -3,8 +3,9 @@
 ##
 ## Get latest from https://github.com/github/gitignore/blob/main/VisualStudio.gitignore
 
-# Reject listing
+# Reject listing and ideas plan
 __listing.mentor
+ideas.txt
 
 # User-specific files
 *.rsuser
