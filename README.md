@@ -1,51 +1,53 @@
 # StormTrack
 
-**StormTrack** — C++ WinApi библиотека для отображения временных рядов в реальном времени на Windows с использованием GDI. Основное назначение: ускорение разработки R&D проектов с визуализацией в среде Visual Studio. Библиотека представляет собой программный осциллограф: позволяет строить статические и потоковые данные. Окно отрисовки выполняется в отдельном потоке, оставляя консоль отзывчивой. Хорошая производительность для миллиона точек.
+**Read this in other languages:** [Русский](README.ru.md)
 
-![Пример интерфейса](screen/demo.png) 
-![Пример интерфейса](screen/demo2.png)
+**StormTrack** — is a C++ WinAPI library for real-time time series visualization on Windows using GDI. Its main purpose is to speed up R&D projects that need visualization in Visual Studio. The library works as a software oscilloscope: it can plot both static and streaming data. The rendering window runs in a separate thread, keeping the console responsive. Great performance even with a million data points.
 
-## Основные возможности
+![Interface example](screen/demo.png) 
+![Interface example](screen/demo2.png)
 
-- **Несколько графиков** в одном окне.
-- **Потоковое обновление** — данные подгружаются циклически в реальном времени — стриминг
-- **Статические данные** — средние выборки (1M+)
-- **Масштабирование** колёсиком мыши (по XY или только по X при зажатом Shift); масштабирование относительно позиции курсора.
-- **Панорамирование** (перетаскивание) левой кнопкой мыши в области графика.
-- **Автоподгонка по X** — горячая клавиша `A` включает/выключает автоматическую подстройку видимой области под все активные графики.
-- **Легенда** — список трейсов с возможностью скрытия/отображения (клик по цветному квадрату).
-- **Отслеживание данных** — при наведении курсора на график подсвечивается ближайшая точка и отображаются её координаты.
-- **Адаптивная сетка** с числовыми подписями.
-- **Изменяемый размер области графика** — границы поля можно перетаскивать.
-- **Многопоточность** — окно живёт в отдельном потоке, не блокируя основной поток консольного приложения.
+## Key Features
 
-## Сборка
+- **Multiple plots** in a single window.
+- **Streaming updates** — data is continuously loaded in real time.
+- **Static data** — medium-sized datasets (1M+).
+- **Zoom** via mouse wheel (both XY or X-only with Shift held); zooming relative to cursor position.
+- **Pan** (dragging) with left mouse button within the plot area.
+- **Auto-fit on X** — the `A` hotkey toggles automatic adjustment of the visible area to match all active traces.
+- **Legend** — a list of traces with show/hide toggles (click the colored square).
+- **Data tracking** — hovering over the plot highlights the nearest point and displays its coordinates.
+- **Adaptive grid** with numeric labels.
+- **Resizable plot area** — plot boundaries can be dragged.
+- **Multithreading** — the window runs in its own thread without blocking the main console thread.
 
-### Способ 1 — готовый SDK (рекомендуется)
-1. Получите SDK. Если в [Releases](https://github.com/c7ex/StormTrack/releases/tag/v1.1.0) доступен готовый SDK (.zip), скачайте его и распакуйте.
-   Иначе откройте решение и соберите проект `StormTrack` в конфигурации Release —
-   в папке `bin/x64/Release` появятся `StormTrack.lib` и папка `StormTrackHeaders`.
-2. Скопируйте в свой проект папку `StormTrackHeaders` и файл `StormTrack.lib`.
-3. В настройках проекта Visual Studio:
-   - **C/C++ → General → Additional Include Directories** – добавьте путь к папке `StormTrackHeaders`.
-   - **Linker → Input → Additional Dependencies** – добавьте `StormTrack.lib`.
-   - **Linker → General → Additional Library Directories** – укажите папку, где лежит `StormTrack.lib`.
-4. Подключите заголовок: `#include "StormTrack.hpp"`.
+## Build Instructions
 
-**Примечание:** проект `Demo` имеет пример подключения.
+### Method 1 — Ready-to-use SDK (recommended)
+1. Get the SDK. If a prebuilt SDK (.zip) is available in [Releases](https://github.com/c7ex/StormTrack/releases/tag/v1.1.0), download and extract it.
+   Otherwise, open the solution and build the `StormTrack` project in Release configuration —
+   `StormTrack.lib` and the `StormTrackHeaders` folder will appear in `bin/x64/Release`.
+2. Copy the `StormTrackHeaders` folder and `StormTrack.lib` into your project.
+3. In your Visual Studio project settings:
+   - **C/C++ → General → Additional Include Directories** – add the path to the `StormTrackHeaders` folder.
+   - **Linker → Input → Additional Dependencies** – add `StormTrack.lib`.
+   - **Linker → General → Additional Library Directories** – specify the folder containing `StormTrack.lib`.
+4. Include the header: `#include "StormTrack.hpp"`.
 
-### Способ 2 — добавление исходных файлов в свой проект
-1. Создайте консольное приложение в Visual Studio.
-2. Добавьте в проект все папки с исходниками `GraphCore/`, `GraphModules/`, `RaiiWinApi/`, `StormTrack/`. Требуется указать все пути до `.hpp` и `.cpp`.
-3. Соберите в Release (рекомендуется).
+**Note:** the `Demo` project includes a usage example.
 
-**Примечание:** если возникнет ошибка C1010, отключите предкомпилированные заголовки в настройках проекта.
+### Method 2 — Adding source files directly to your project
+1. Create a console application in Visual Studio.
+2. Add all source folders to your project: `GraphCore/`, `GraphModules/`, `RaiiWinApi/`, `StormTrack/`. Make sure to include all paths to `.hpp` and `.cpp` files.
+3. Build in Release (recommended).
 
-Ваше консольное приложение будет готово использовать визуализацию.
+**Note:** if you encounter error C1010, disable precompiled headers in your project settings.
 
-## Быстрый старт
+Your console application will then be ready to use the visualization.
 
-### Статический график
+## Quick Start
+
+### Static Plot
 
 ```cpp
 #include "StormTrack.hpp"
@@ -63,7 +65,7 @@ window.Close();
 window.WaitForClose();
 ```
 
-### Потоковое обновление
+### Streaming Data
 
 ```cpp
 #include "StormTrack.hpp"
@@ -83,22 +85,23 @@ window.Close();
 window.WaitForClose();
 ```
 
-## Управление
+## Controls
 
-| Действие | Управление |
-|----------|------------|
-| Масштабирование | Колёсико мыши. Обычно — одновременно по X и Y. С зажатым `Shift` — только по X. С зажатым `Ctrl` — быстрый зум. Масштаб меняется относительно положения курсора. |
-| Перемещение (панорамирование) | Зажать левую кнопку мыши на области графика и тянуть. |
-| Автомасштаб по X | Клавиша `A` (работает как переключатель). Когда включён, видимая область автоматически подстраивается под весь диапазон активных трэйсов по оси X. |
-| Легенда (скрыть/показать трэйс) | Клик по цветному квадратику в правой части окна. Трэйс временно скрывается или снова отображается. |
-| Отслеживание координат | Навести курсор на график — ближайшая точка данных подсвечивается, а рядом с указателем появляется подсказка с её координатами. |
-| Изменение размера области графика | Подвести курсор к границе тёмной рамки (появится двусторонняя стрелка) и перетащить границу. Скрывает и разворачивает панель с легендой. |
+| Action | Control |
+|--------|---------|
+| Zoom | Mouse wheel. Default — both X and Y. With `Shift` held — X only. With `Ctrl` held — fast zoom. Zoom is centered on cursor position. |
+| Pan | Hold left mouse button over the plot area and drag. |
+| Auto-fit X | `A` key (toggles on/off). When enabled, the visible area automatically adjusts to cover the full X range of all active traces. |
+| Legend (show/hide trace) | Click the colored square in the right panel. The trace is temporarily hidden or shown again. |
+| Coordinate tracking | Hover over the plot — the nearest data point is highlighted, and a tooltip with its coordinates appears near the cursor. |
+| Plot area resize | Move the cursor to the edge of the dark border (a double-sided arrow will appear) and drag the boundary. Expands or collapses the legend panel. |
 
-## Требования
-- Windows XP и выше
-- Компилятор с поддержкой C++11 (Visual Studio 2015+, MinGW-w64 с GCC 5+)
-- Никаких внешних библиотек: только стандартные `kernel32`, `user32`, `gdi32`
+## Requirements
+- Windows XP or later
+- A C++11-compatible compiler (Visual Studio 2015+, MinGW-w64 with GCC 5+)
+- No external libraries: only standard `kernel32`, `user32`, `gdi32`
 
-## Лицензия
-MIT License. См. файл `LICENSE` в корне репозитория.
+## License
+MIT License. See the `LICENSE` file in the repository root.
+
 
