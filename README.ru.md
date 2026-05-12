@@ -24,7 +24,7 @@
 ## Сборка
 
 ### Способ 1 — готовый SDK (рекомендуется)
-1. Получите SDK. Если в [Releases](https://github.com/c7ex/StormTrack/releases/tag/v1.1.0) доступен готовый SDK (.zip), скачайте его и распакуйте.
+1. Получите SDK. Если в [Releases](https://github.com/c7ex/StormTrack-Oscilloscope/releases/tag/v1.2.0) доступен готовый SDK (.zip), скачайте его и распакуйте.
    Иначе откройте решение и соберите проект `StormTrack` в конфигурации Release —
    в папке `bin/x64/Release` появятся `StormTrack.lib` и папка `StormTrackHeaders`.
 2. Скопируйте в свой проект папку `StormTrackHeaders` и файл `StormTrack.lib`.
@@ -39,9 +39,18 @@
 ### Способ 2 — добавление исходных файлов в свой проект
 1. Создайте консольное приложение в Visual Studio.
 2. Добавьте в проект все папки с исходниками `GraphCore/`, `GraphModules/`, `RaiiWinApi/`, `StormTrack/`. Требуется указать все пути до `.hpp` и `.cpp`.
-3. Соберите в Release (рекомендуется).
+3. Соберите в Debug/Release.
 
 **Примечание:** если возникнет ошибка C1010, отключите предкомпилированные заголовки в настройках проекта.
+
+> **Совместимость версий компилятора**  
+>  
+> Готовый `StormTrack.lib` в SDK собран с **Platform Toolset v143** (Visual Studio 2022).  
+> Если ваш проект использует более новую версию инструментов (например, **v145** из Visual Studio 2026 Preview), при линковке могут возникнуть ошибки (`LNK2038` или похожие) из-за несовместимости ABI.  
+>  
+> **Как это исправить:**  
+> - **Вариант 1 (рекомендуемый):** Переключите `Platform Toolset` вашего проекта на **v143** (или любую версию от v140 до v143). Это обеспечит бинарную совместимость без пересборки SDK.  
+> - **Вариант 2:** Пересоберите `StormTrack.lib` самостоятельно под нужный вам toolset. Скачайте исходный код, откройте решение, измените `Platform Toolset` проекта `StormTrack` на вашу версию (например, v145) и выполните сборку в конфигурации Debug/Release.
 
 Ваше консольное приложение будет готово использовать визуализацию.
 
@@ -69,6 +78,8 @@ window.WaitForClose();
 
 ```cpp
 #include "StormTrack.hpp"
+
+HINSTANCE hInstance = GetModuleHandle(nullptr);
 StormTrack window(hInstance, L"[Example] streaming data");
 window.Show();
 
