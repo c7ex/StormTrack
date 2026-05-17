@@ -4,7 +4,7 @@
 
 **StormTrack** — is a C++ WinAPI library for real-time time series visualization on Windows using GDI. Its main purpose is to speed up R&D projects that need visualization in Visual Studio. The library works as a software oscilloscope: it can plot both static and streaming data. The rendering window runs in a separate thread, keeping the console responsive. Great performance even with a million data points.
 
-![Interface example](screen\Demo.gif) 
+![Interface example](screen/Demo.gif) 
 
 ## Key Features
 
