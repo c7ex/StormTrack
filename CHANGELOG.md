@@ -5,6 +5,27 @@
 Формат основан на [Keep a Changelog](https://keepachangelog.com/ru/1.0.0/),
 и этот проект придерживается [семантического версионирования](https://semver.org/spec/v2.0.0.html).
 
+## [1.3.0] - 2026-05-17
+
+### Added
+- Обновлен SDK.
+- Обновлен README.
+- Обновлен демонстрационный проект.
+- Добавлен метод `FrameView` для потоковой замены данных с перемещением (move semantics).
+- Добавлен метод `RealtimeView` для накопления данных в конец трейса без удаления истории.
+- Единый метод `AddTrace` для создания трейсов (заменяет `AddStreamingTrace`).
+- Добавлен структура `StormTrackInitParameters` для начальной настройки окна:
+  - `window_size` — размер окна в пикселях (по умолчанию 800x600).
+  - `visible_area_size` — размер видимой области по осям X и Y (по умолчанию 100x100).
+  - `start_coordination` — начальное смещение координат (по умолчанию 0, 0).
+- Конструктор `StormTrack(HINSTANCE, StormTrackInitParameters, const wchar_t*)` для создания окна с пользовательскими параметрами.
+- Второй конструктор с параметрами по умолчанию для быстрого старта.
+
+### Deprecated
+- `StaticData` — используйте `JustView`.
+- `AddStreamingTrace` — используйте `AddTrace`.
+- `Streaming` — используйте `FrameView` или `RealtimeView`.
+
 ## [1.2.0] - 2026-05-13
 
 ### Added

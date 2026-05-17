@@ -4,8 +4,7 @@
 
 **StormTrack** — is a C++ WinAPI library for real-time time series visualization on Windows using GDI. Its main purpose is to speed up R&D projects that need visualization in Visual Studio. The library works as a software oscilloscope: it can plot both static and streaming data. The rendering window runs in a separate thread, keeping the console responsive. Great performance even with a million data points.
 
-![Interface example](screen/demo.png) 
-![Interface example](screen/demo2.png)
+![Interface example](screen\Demo.gif) 
 
 ## Key Features
 
@@ -24,7 +23,7 @@
 ## Build Instructions
 
 ### Method 1 — Ready-to-use SDK (recommended)
-1. Get the SDK. If a prebuilt SDK (.zip) is available in [Releases](https://github.com/c7ex/StormTrack-Oscilloscope/releases/tag/v1.2.0), download and extract it.
+1. Get the SDK. If a prebuilt SDK (.zip) is available in [Releases](https://github.com/c7ex/StormTrack-Oscilloscope/releases/tag/v1.3.0), download and extract it.
    Otherwise, open the solution and build the `StormTrack` project in Release configuration —
    `StormTrack.lib` and the `StormTrackHeaders` folder will appear in `bin/x64/Release`.
 2. Copy the `StormTrackHeaders` folder and `StormTrack.lib` into your project.
@@ -65,7 +64,7 @@ std::vector<double> data = // ...
 
 HINSTANCE hInstance = GetModuleHandle(nullptr);
 StormTrack window(hInstance, L"[Example] static data");
-window.StaticData(data, L"Data", RGB(255,120,120));
+window.JustView(data, L"Data", RGB(255, 120, 120));
 window.Show();
 
 // ...
@@ -74,27 +73,62 @@ window.Close();
 window.WaitForClose();
 ```
 
-### Streaming Data
+### Frame Streaming
+
+Full data replacement every frame. The vector is moved — becomes empty after call.
 
 ```cpp
 #include "StormTrack.hpp"
 
 HINSTANCE hInstance = GetModuleHandle(nullptr);
-StormTrack window(hInstance, L"[Example] streaming data");
+StormTrack window(hInstance, L"[Example] frame streaming");
 window.Show();
 
-auto traceId = window.AddStreamingTrace(L"Data", RGB(255,120,120));
+size_t traceId = window.AddTrace(L"Data", RGB(255, 120, 120));
 
 for (;;) {
-
-	std::vector<double> data = // ...
-
-    window.Streaming(data, traceId);
+    std::vector<double> data = // ...
+    window.FrameView(data, traceId); // data is moved, becomes empty
 }
 
 window.Close();
 window.WaitForClose();
 ```
+
+### Real-Time Accumulation
+
+Appends data to the end of trace. The original vector is preserved.
+
+```cpp
+#include "StormTrack.hpp"
+
+HINSTANCE hInstance = GetModuleHandle(nullptr);
+StormTrack window(hInstance, L"[Example] real-time data");
+window.Show();
+
+size_t traceId = window.AddTrace(L"Data", RGB(255, 120, 120));
+
+for (;;) {
+    std::vector<double> chunk = // ...
+    window.RealtimeView(chunk, traceId); // chunk is copied, stays intact
+}
+
+window.Close();
+window.WaitForClose();
+```
+
+## API Reference
+
+| Method | Description | Data ownership |
+|--------|-------------|----------------|
+| `JustView(data, name, color, step, offset)` | Load static plot once | Copies |
+| `AddTrace(name, color, step, offset)` | Create trace, returns ID | — |
+| `FrameView(data, traceId)` | Full frame replace | Moves |
+| `RealtimeView(data, traceId)` | Append data to trace end | Copies |
+| `Show()` | Open window in background thread | — |
+| `Close()` | Send close signal to window | — |
+| `WaitForClose()` | Block until window thread exits | — |
+| `IsActive()` | Check if window is still open | — |
 
 ## Controls
 

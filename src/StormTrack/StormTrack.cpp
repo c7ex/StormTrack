@@ -35,13 +35,17 @@ bool StormTrack::RegisterWindowClass() {
 }
 
 bool StormTrack::Create(int nCmdShow) {
+
+    Vec2d window_size = graphState.ExtractWindowSize();
+
     hwnd = CreateWindowEx(
         0,
         CLASS_NAME,
         windowTitle,
         WS_OVERLAPPEDWINDOW,
         CW_USEDEFAULT, CW_USEDEFAULT,
-        800, 600,
+        window_size.x,
+        window_size.y,
         nullptr,
         nullptr,
         hInstance,
@@ -73,15 +77,36 @@ void StormTrack::ThreadProc(int nCmdShow) {
     }
 }
 
-StormTrack::StormTrack(HINSTANCE hInst, const wchar_t* title)
-    : hInstance(hInst), hwnd(nullptr), windowTitle(title),
-    windowCreated(false), windowClosed(false) {
+StormTrack::StormTrack(HINSTANCE hInst, const wchar_t* title) {
+    StormTrackInitParameters init_parameters;
+    Create(hInst, init_parameters, title);
+}
+
+StormTrack::StormTrack(HINSTANCE hInst, StormTrackInitParameters init_parameters, const wchar_t* title) {
+    Create(hInst, init_parameters, title);
+}
+
+void StormTrack::Create(HINSTANCE hInst, StormTrackInitParameters init_parameters, const wchar_t* title)
+{
+    hInstance = hInst;
+    hwnd = nullptr;
+    windowTitle = title;
+    windowCreated = false;
+    windowClosed = false;
 
     RegisterWindowClass();
 
-    graphState.InitializeWindowSize(800, 600);
-    graphState.InitializeVisibleArea(1000.0, 2000.0);
-    graphState.InitializeReferencePosition(0.0, -1000.0);
+    graphState.InitializeWindowSize(
+        init_parameters.window_size.x,
+        init_parameters.window_size.y);
+
+    graphState.InitializeVisibleArea(
+        init_parameters.visible_area_size.x,
+        init_parameters.visible_area_size.y);
+
+    graphState.InitializeReferencePosition(
+        init_parameters.start_coordination.x,
+        init_parameters.start_coordination.y);
 }
 
 StormTrack::~StormTrack() {
@@ -89,38 +114,4 @@ StormTrack::~StormTrack() {
     if (windowThread.joinable()) {
         windowThread.join();
     }
-}
-
-bool StormTrack::Show(int nCmdShow) {
-    if (windowThread.joinable()) {
-        return false;
-    }
-
-    windowThread = std::thread(&StormTrack::ThreadProc, this, nCmdShow);
-
-    while (!windowCreated && !windowClosed) {
-        Sleep(10);
-    }
-
-    return windowCreated;
-}
-
-void StormTrack::Close() {
-    if (hwnd && !windowClosed) {
-        PostMessage(hwnd, WM_CLOSE, 0, 0);
-    }
-}
-
-void StormTrack::WaitForClose() {
-    if (windowThread.joinable()) {
-        windowThread.join();
-    }
-}
-
-bool StormTrack::IsValid() const {
-    return (hwnd != nullptr) && (!windowClosed);
-}
-
-HWND StormTrack::GetHandle() const {
-    return hwnd;
 }

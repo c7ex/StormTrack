@@ -230,6 +230,10 @@ void GraphState::RenderGraph(HDC hdc)
 // >> end draw
 }
 
+Vec2d GraphState::ExtractWindowSize() {
+    return graph_context_.GetWindowSize();
+}
+
 CursorType GraphState::ExtractCursorType() {
     window_state_.UpdatePlotStates(graph_context_);
     CursorType ct = window_state_.GetCursorType();
@@ -275,5 +279,17 @@ bool GraphState::StreamUpdate(std::vector<double>& load_data, size_t trace_index
         return true;
     }
     
+    return false;
+}
+
+bool GraphState::StreamAppend(std::vector<double>& load_data, size_t trace_index) {
+    std::lock_guard<std::mutex> lock(mtx);
+    auto count_traces = legend_item_.GetCountTrace();
+
+    if (trace_index < count_traces) {
+        data_state_.append(load_data, trace_index);
+        return true;
+    }
+
     return false;
 }

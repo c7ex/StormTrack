@@ -83,6 +83,21 @@ namespace rwa {
 			}
 		}
 
+		FONT(HDC hdc, LOGFONT logfont) {
+			context = hdc;
+			created_font = CreateFontW(logfont.lfHeight, logfont.lfWidth, logfont.lfEscapement, logfont.lfOrientation,
+				logfont.lfWeight, logfont.lfItalic, logfont.lfUnderline, logfont.lfStrikeOut,
+				logfont.lfCharSet, logfont.lfOutPrecision, logfont.lfClipPrecision,
+				logfont.lfQuality, logfont.lfPitchAndFamily, logfont.lfFaceName);
+			if (created_font) {
+				old_object = (HFONT)SelectObject(hdc, created_font);
+				SetBkMode(hdc, TRANSPARENT);
+			}
+			else {
+				old_object = nullptr;
+			}
+		}
+
 		FONT(HDC hdc, int height, int width, int escapement, int orientation, //
 			int weight, bool italic, bool underline, bool strikeout,
 			DWORD charset, DWORD out_precision, DWORD clip_precision,

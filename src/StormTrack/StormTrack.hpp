@@ -1,19 +1,20 @@
-#pragma once
-#include <windows.h>
-#include <thread>
-#include <atomic>
-#include <windowsx.h>
-
-#include"GraphState.hpp"
+#ifndef STORM_TRACK_HPP
+#define STORM_TRACK_HPP
 
 #pragma comment(lib, "kernel32.lib")
 #pragma comment(lib, "user32.lib")
 #pragma comment(lib, "gdi32.lib")
 
+#include <windows.h>
+#include <thread>
+#include <atomic>
+
+#include"GraphState.hpp"
+
 /*
     <StormTrack>
-    description: 
-        A Windows window wrapper class that runs in a separate thread. 
+    description:
+        A Windows window wrapper class that runs in a separate thread.
         This class encapsulates Windows API window creation and management,
         allowing windows to be created and controlled from console applications
         without blocking the main thread.
@@ -21,17 +22,25 @@
     Usage example:
         HINSTANCE hInstance = GetModuleHandle(nullptr);
         StormTrack window(hInstance, L"My Window");
+        
+        use:
+            - JustView
+            - AddTrace + FrameView/RealtimeView
+
         window.Show(); // Window runs in background thread
         window.Close(); // Close window
         window.WaitForClose(); // Wait for thread to finish
 
     Console remains interactive!
 
-    note: The window runs in its own thread. Always call WaitForClose()
-    before destroying the object if the window is still open.
-
     C++11 or later
  */
+
+struct StormTrackInitParameters {
+    Vec2d window_size = { 800, 600 };
+    Vec2d visible_area_size = { 100, 100 };
+    Vec2d start_coordination = { 0, 0 };
+};
 
 class StormTrack {
 private:
@@ -47,11 +56,14 @@ private:
     GraphState graphState;
 
 private:
+    HBITMAP hBackBuffer = nullptr;
+    int bufferWidth = 0;
+    int bufferHeight = 0;
+    
+private:
     const UINT_PTR TimerId = 1;
     UINT TimerInterval = 24;
-    HBITMAP hBackBuffer = nullptr;
-    int bufferWidth = 0, bufferHeight = 0;
-    
+
 private:
     static LRESULT CALLBACK WindowProcStatic(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam);
     LRESULT WindowProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam);
@@ -61,25 +73,21 @@ private:
 
 public:
     StormTrack(HINSTANCE hInst, const wchar_t* title = L"StormTrack");
+    StormTrack(HINSTANCE hInst, StormTrackInitParameters init_parameters = {}, const wchar_t* title = L"StormTrack");
+    void Create(HINSTANCE hInst, StormTrackInitParameters init_parameters, const wchar_t* title);
     ~StormTrack();
     
+public:
     bool Show(int nCmdShow = SW_SHOWDEFAULT);
     void Close();
     void WaitForClose();
-    bool IsValid() const;
-
-    HWND GetHandle() const;
+    bool IsActive() const;
 
 public:
-    void StaticData(std::vector<double>& load_data, std::wstring caption, COLORREF color, double step = 1, double offset = 0) {
-        graphState.AddData(load_data, caption, color, step, offset);
-    }
-
-    size_t AddStreamingTrace(std::wstring caption, COLORREF color, double step = 1, double offset = 0) {
-        return graphState.CreateTrace(caption, color, step, offset);
-    }
-
-    bool Streaming(std::vector<double>& load_data, size_t trace_index) {
-        return graphState.StreamUpdate(load_data, trace_index);
-    }
+    size_t AddTrace(std::wstring caption, COLORREF color, double step = 1, double offset = 0);
+    void JustView(std::vector<double>& load_data, std::wstring caption, COLORREF color, double step = 1, double offset = 0);
+    bool FrameView(std::vector<double>& load_data, size_t trace_index);
+    bool RealtimeView(std::vector<double>& load_data, size_t trace_index);
 };
+
+#endif

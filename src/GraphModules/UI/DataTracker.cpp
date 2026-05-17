@@ -161,8 +161,8 @@ void DataTracker::ShowCoordinates(HDC hdc, GraphContext& context, const Transfor
         LOGFONT lf = {};
         GetObject(GetStockObject(DEFAULT_GUI_FONT), sizeof(LOGFONT), &lf);
         lf.lfWeight = (search_data_result.nearest_range >= 0) ? FW_BOLD : FW_NORMAL;
-        HFONT hFont = CreateFontIndirect(&lf);
-        HFONT oldFont = (HFONT)SelectObject(hdc, hFont);
+
+        rwa::FONT font(hdc, lf);
 
         SIZE textSize;
         GetTextExtentPoint32W(hdc, coord_text.c_str(), coord_text.length(), &textSize);
@@ -182,8 +182,6 @@ void DataTracker::ShowCoordinates(HDC hdc, GraphContext& context, const Transfor
             top + ConfigUI::DataTracker::padding,
             coord_text.c_str(), coord_text.length());
 
-        SelectObject(hdc, oldFont);
-        DeleteObject(hFont);
         SetBkMode(hdc, oldBkMode);
         SetTextColor(hdc, oldTextColor);
     }

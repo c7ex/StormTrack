@@ -41,6 +41,7 @@
     <ClCompile Include="..\..\src\GraphModules\UI\WindowState.cpp" />
     <ClCompile Include="..\..\src\GraphModules\UI\ZoomState.cpp" />
     <ClCompile Include="..\..\src\StormTrack\StormTrack.cpp" />
+    <ClCompile Include="..\..\src\StormTrack\StormTrackAPI.cpp" />
     <ClCompile Include="..\..\src\StormTrack\WinApiEvents.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -208,6 +209,6 @@ for /r "$(SolutionDir)..\src" %%f in (*.hpp) do copy "%%f" "$(OutDir)StormTrackH
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
   <Target Name="CleanStormTrackHeaders" AfterTargets="CoreClean">
-  <RemoveDir Directories="$(OutDir)StormTrackHeaders" />
+    <RemoveDir Directories="$(OutDir)StormTrackHeaders" />
   </Target>
 </Project>

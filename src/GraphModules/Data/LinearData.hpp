@@ -48,7 +48,8 @@ public:
 	COLORREF GetColor() const;
 
 public:
-	void LoadData(const std::vector<double>& new_data);
+	void LoadData(std::vector<double>& new_data);
+	void AppendData(const std::vector<double>& new_data);
 
 public:
 	void Init(const std::vector<double>& init_data, double init_step, double init_offset);

@@ -50,8 +50,12 @@ COLORREF LinearData::GetColor() const {
 	return color;
 }
 
-void LinearData::LoadData(const std::vector<double>& new_data) {
-	data = new_data;
+void LinearData::LoadData(std::vector<double>& new_data) {
+	data = std::move(new_data);
+}
+
+void LinearData::AppendData(const std::vector<double>& new_data) {
+	data.insert(data.end(), new_data.begin(), new_data.end());
 }
 
 void LinearData::Init(const std::vector<double>& init_data, double init_step, double init_offset) {

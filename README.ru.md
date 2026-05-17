@@ -4,8 +4,7 @@
 
 **StormTrack** — C++ WinApi библиотека для отображения временных рядов в реальном времени на Windows с использованием GDI. Основное назначение: ускорение разработки R&D проектов с визуализацией в среде Visual Studio. Библиотека представляет собой программный осциллограф: позволяет строить статические и потоковые данные. Окно отрисовки выполняется в отдельном потоке, оставляя консоль отзывчивой. Хорошая производительность для миллиона точек.
 
-![Пример интерфейса](screen/demo.png) 
-![Пример интерфейса](screen/demo2.png)
+![Пример интерфейса](screen\Demo.gif) 
 
 ## Основные возможности
 
@@ -24,7 +23,7 @@
 ## Сборка
 
 ### Способ 1 — готовый SDK (рекомендуется)
-1. Получите SDK. Если в [Releases](https://github.com/c7ex/StormTrack-Oscilloscope/releases/tag/v1.2.0) доступен готовый SDK (.zip), скачайте его и распакуйте.
+1. Получите SDK. Если в [Releases](https://github.com/c7ex/StormTrack-Oscilloscope/releases/tag/v1.3.0) доступен готовый SDK (.zip), скачайте его и распакуйте.
    Иначе откройте решение и соберите проект `StormTrack` в конфигурации Release —
    в папке `bin/x64/Release` появятся `StormTrack.lib` и папка `StormTrackHeaders`.
 2. Скопируйте в свой проект папку `StormTrackHeaders` и файл `StormTrack.lib`.
@@ -64,8 +63,8 @@
 std::vector<double> data = // ...
 
 HINSTANCE hInstance = GetModuleHandle(nullptr);
-StormTrack window(hInstance, L"[Example] static data");
-window.StaticData(data, L"Data", RGB(255,120,120));
+StormTrack window(hInstance, L"[Пример] статические данные");
+window.JustView(data, L"Данные", RGB(255, 120, 120));
 window.Show();
 
 // ...
@@ -74,27 +73,62 @@ window.Close();
 window.WaitForClose();
 ```
 
-### Потоковое обновление
+### Потоковая замена кадров
+
+Полная замена данных каждый кадр. Вектор перемещается — после вызова становится пустым.
 
 ```cpp
 #include "StormTrack.hpp"
 
 HINSTANCE hInstance = GetModuleHandle(nullptr);
-StormTrack window(hInstance, L"[Example] streaming data");
+StormTrack window(hInstance, L"[Пример] потоковая замена");
 window.Show();
 
-auto traceId = window.AddStreamingTrace(L"Data", RGB(255,120,120));
+size_t traceId = window.AddTrace(L"Данные", RGB(255, 120, 120));
 
 for (;;) {
-
-	std::vector<double> data = // ...
-
-    window.Streaming(data, traceId);
+    std::vector<double> data = // ...
+    window.FrameView(data, traceId); // data перемещается, становится пустым
 }
 
 window.Close();
 window.WaitForClose();
 ```
+
+### Накопление в реальном времени
+
+Добавляет данные в конец трейса. Исходный вектор сохраняется.
+
+```cpp
+#include "StormTrack.hpp"
+
+HINSTANCE hInstance = GetModuleHandle(nullptr);
+StormTrack window(hInstance, L"[Пример] накопление данных");
+window.Show();
+
+size_t traceId = window.AddTrace(L"Данные", RGB(255, 120, 120));
+
+for (;;) {
+    std::vector<double> chunk = // ...
+    window.RealtimeView(chunk, traceId); // chunk копируется, остаётся нетронутым
+}
+
+window.Close();
+window.WaitForClose();
+```
+
+## Описание API
+
+| Метод | Назначение | Владение данными |
+|-------|-----------|-----------------|
+| `JustView(data, name, color, step, offset)` | Загрузить статический график | Копирует |
+| `AddTrace(name, color, step, offset)` | Создать трейс, возвращает ID | — |
+| `FrameView(data, traceId)` | Полная замена кадра | Перемещает |
+| `RealtimeView(data, traceId)` | Добавить данные в конец трейса | Копирует |
+| `Show()` | Открыть окно в фоновом потоке | — |
+| `Close()` | Отправить сигнал закрытия окну | — |
+| `WaitForClose()` | Дождаться завершения потока окна | — |
+| `IsActive()` | Проверить, открыто ли окно | — |
 
 ## Управление
 

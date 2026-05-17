@@ -18,6 +18,10 @@ void DataState::stream(std::vector<double>& new_data, size_t trace_index) {
     data[trace_index].LoadData(new_data);
 }
 
+void DataState::append(std::vector<double>& new_data, size_t trace_index) {
+    data[trace_index].AppendData(new_data);
+}
+
 void DataState::update_data(const LegendItem& li) {
     for (int i = 0; i < data.size(); ++i) {
         data[i].SetStatus(li.IsActive(i));
@@ -39,7 +43,7 @@ void DataState::draw(HDC hdc, const RenderCache& cache, const LegendItem& li) {
         if (!trace.is_active || trace.points.empty()) continue;
 
         COLORREF color = li.GetColor(trace.trace_id);
-        rwa::PEN pen(hdc, PS_SOLID, trace.is_compressed ? 1 : 2, color); // wow, GDI bust
+        rwa::PEN pen(hdc, PS_SOLID, trace.is_compressed ? 1 : 2, color);
 
         size_t idx = 0;
         while (idx < trace.points.size()) {

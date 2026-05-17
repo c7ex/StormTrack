@@ -114,6 +114,9 @@
     <ClCompile Include="..\..\src\StormTrack\WinApiEvents.cpp">
       <Filter>src\StormTrack</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\StormTrack\StormTrackAPI.cpp">
+      <Filter>src\StormTrack</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\GraphCore\GraphContext.hpp">
